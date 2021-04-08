@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Ground
   - PlayerManager
+  - CollectedPool
+  - CollectibleObj
+  - CollectedObj
+  - Obstacle
   layers:
   - Default
   - TransparentFX

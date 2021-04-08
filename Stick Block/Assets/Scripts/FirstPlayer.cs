@@ -4,15 +4,41 @@ using UnityEngine;
 
 public class FirstPlayer : MonoBehaviour
 {
-    // Start is called before the first frame update
+    PlayerManager playerManager;
+    Rigidbody rigidbody;
+    bool isGrounded; 
+    
+    
     void Start()
     {
-        
+        playerManager = GameObject.FindGameObjectWithTag("PlayerManager").GetComponent<PlayerManager>(); 
+        rigidbody = GetComponent<Rigidbody>();
+        GetComponent<Renderer>().material = playerManager.collectedObjMat;
+        playerManager.collidedList.Add(gameObject);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         
     }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            Grounded();
+        }
+    }
+
+    void Grounded()
+    {
+        isGrounded = true;
+        playerManager.playerState = PlayerManager.PlayerState.Move;
+        rigidbody.useGravity = false;
+        rigidbody.constraints = RigidbodyConstraints.FreezeAll;
+        Destroy(this, 1);
+    }
+
+
 }

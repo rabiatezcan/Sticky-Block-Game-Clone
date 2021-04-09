@@ -10,6 +10,8 @@ TagManager:
   - CollectibleObj
   - CollectedObj
   - Obstacle
+  - FinishHole
+  - FinishLine
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - FinishGroundLayer
   - 
   - 
   - 

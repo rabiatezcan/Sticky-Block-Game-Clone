@@ -64,7 +64,14 @@ public class PlayerManager : MonoBehaviour
             isTouching = false;
         }
     }
-  
+    
+    public void CallMakeSphere()
+    {
+        foreach(GameObject obj in collidedList)
+        {
+            obj.GetComponent<CollectedObjController>().MakeSphere();
+        }
+    }
 
 
 }

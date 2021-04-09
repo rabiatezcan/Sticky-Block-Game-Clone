@@ -33,7 +33,41 @@ public class CollectedObjController : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Obstacle"))
         {
+            playerManager.collidedList.Remove(gameObject);
             Destroy(gameObject);
+
         }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("FinishLine"))
+        {
+            if(playerManager.levelState == PlayerManager.LevelState.Continue)
+            {
+                playerManager.levelState = PlayerManager.LevelState.Finished;
+                playerManager.CallMakeSphere();
+            }
+        }
+        else if (other.gameObject.CompareTag("FinishHole"))
+        {
+            DropObj();
+        }
+    }
+    public void MakeSphere()
+    {
+        gameObject.GetComponent<BoxCollider>().enabled = false;
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        sphere.gameObject.GetComponent<SphereCollider>().enabled = true;
+        sphere.gameObject.GetComponent<MeshRenderer>().enabled = true;
+        sphere.gameObject.GetComponent<SphereCollider>().isTrigger = true;
+        sphere.gameObject.GetComponent<Renderer>().material = playerManager.collectedObjMat;
+    }
+    public void DropObj()
+    {
+        sphere.gameObject.layer = 6;
+        sphere.gameObject.GetComponent<SphereCollider>().isTrigger = false;
+        sphere.gameObject.AddComponent<Rigidbody>();
+        sphere.GetComponent<Rigidbody>().useGravity = true; 
+    
     }
 }

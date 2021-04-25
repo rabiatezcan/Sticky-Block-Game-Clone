@@ -12,6 +12,7 @@ TagManager:
   - Obstacle
   - FinishHole
   - FinishLine
+  - CornerLine
   layers:
   - Default
   - TransparentFX

@@ -19,6 +19,10 @@ public class PlayerManager : MonoBehaviour
     //Objelerin durumu
     public PlayerState playerState;
     public LevelState levelState;
+
+
+    // Particle 
+    public Transform particlePrefab;
     public enum PlayerState
     {
         Stop, Move, Start // canvasta kullan

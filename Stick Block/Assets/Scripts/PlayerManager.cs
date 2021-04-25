@@ -25,7 +25,7 @@ public class PlayerManager : MonoBehaviour
     public Transform particlePrefab;
     public enum PlayerState
     {
-        Stop, Move, Start // canvasta kullan
+        Stop, Move, Start 
     }
     public enum LevelState
     {
@@ -37,6 +37,7 @@ public class PlayerManager : MonoBehaviour
         collectedPool = GameObject.FindGameObjectWithTag("CollectedPool");
         movementSpeed = 3;
         controlSpeed = 5;
+        playerState = PlayerState.Start;
     }
     private void Update()
     {

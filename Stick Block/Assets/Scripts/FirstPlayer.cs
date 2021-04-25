@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class FirstPlayer : MonoBehaviour
 {
     PlayerManager playerManager;
     Rigidbody rigidbody;
-    bool isGrounded; 
-    
+    public Canvas canvas; 
+    bool isGrounded;
     
     void Start()
     {
@@ -20,23 +20,17 @@ public class FirstPlayer : MonoBehaviour
 
     void Update()
     {
-        
-    }
-
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("Ground"))
-        {
+        if (Input.GetMouseButtonDown(0)) { 
             Grounded();
         }
     }
-
     void Grounded()
     {
         isGrounded = true;
         playerManager.playerState = PlayerManager.PlayerState.Move;
         rigidbody.useGravity = false;
         rigidbody.constraints = RigidbodyConstraints.FreezeAll;
+        canvas.enabled = false;
         Destroy(this, 1);
     }
 

@@ -37,6 +37,7 @@ public class CollectedObjController : MonoBehaviour
             playerManager.collidedList.Remove(gameObject);
             Destroy(gameObject);
             Transform particle = Instantiate(playerManager.particlePrefab, transform.position, Quaternion.identity);
+            particle.GetComponent<ParticleSystem>().startColor = playerManager.collectedObjMat.color;
         }
     }
     private void OnTriggerEnter(Collider other)

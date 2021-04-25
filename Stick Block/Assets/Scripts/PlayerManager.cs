@@ -21,7 +21,7 @@ public class PlayerManager : MonoBehaviour
     public LevelState levelState;
     public enum PlayerState
     {
-        Stop, Move
+        Stop, Move, Start // canvasta kullan
     }
     public enum LevelState
     {
@@ -64,10 +64,10 @@ public class PlayerManager : MonoBehaviour
             isTouching = false;
         }
     }
-    
+
     public void CallMakeSphere()
     {
-        foreach(GameObject obj in collidedList)
+        foreach (GameObject obj in collidedList)
         {
             obj.GetComponent<CollectedObjController>().MakeSphere();
         }

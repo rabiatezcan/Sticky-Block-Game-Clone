@@ -33,9 +33,10 @@ public class CollectedObjController : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Obstacle"))
         {
+            
             playerManager.collidedList.Remove(gameObject);
             Destroy(gameObject);
-
+            Transform particle = Instantiate(playerManager.particlePrefab, transform.position, Quaternion.identity);
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -46,6 +47,7 @@ public class CollectedObjController : MonoBehaviour
             {
                 playerManager.levelState = PlayerManager.LevelState.Finished;
                 playerManager.CallMakeSphere();
+                Debug.Log("MakeSphere("+gameObject.name+")");
             }
         }
         else if (other.gameObject.CompareTag("FinishHole"))
